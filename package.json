@@ -10,13 +10,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:minieyes.esfile.OpenFile"
+    "onCommand:minieyes.esfile.openfile"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "minieyes.esfile.OpenFile",
+        "command": "minieyes.esfile.openfile",
         "title": "Minieyes ESFile: Open File"
       }
     ]
