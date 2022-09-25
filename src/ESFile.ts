@@ -32,7 +32,7 @@ async function getSearchString() {
 export async function openFile() {
     const searchString = await getSearchString();
     const file = await pickFile(searchString);
-    const fileUri = Uri.parse("file:///" + file);
+    const fileUri = Uri.parse("file:///" + file?.trim());
     workspace.openTextDocument(fileUri).then(doc => {
         window.showTextDocument(doc);
     });
