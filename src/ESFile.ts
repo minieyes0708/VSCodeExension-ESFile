@@ -1,4 +1,3 @@
-import * as iconv from 'iconv-lite';
 import childProcess = require("child_process");
 import { window, workspace, Uri } from 'vscode';
 
@@ -13,10 +12,8 @@ function execute(command: string): Promise<string> {
 }
 
 async function pickFile(searchString: string | undefined) {
-    const esfiles = await execute(`es ${searchString}`);
-    // const esfilesEncode = iconv.encode(esfiles, 'big5');
-    const esfilesDecode = iconv.decode(Buffer.from(esfiles), 'utf-8');
-    const result = await window.showQuickPick(esfilesDecode.split('\n'), {
+    const esfiles = await execute(`cmd /c chcp 65001>nul && es ${searchString}`);
+    const result = await window.showQuickPick(esfiles.split('\n'), {
         placeHolder: 'Select File',
     });
     return result;
