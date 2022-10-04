@@ -1,5 +1,6 @@
 {
   "name": "esfile",
+  "publisher": "Minieyes",
   "displayName": "esfile",
   "description": "use ES to manipulate files",
   "version": "0.0.1",
