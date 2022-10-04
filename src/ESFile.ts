@@ -1,27 +1,18 @@
-import childProcess = require("child_process");
+import * as Utils  from './Utils';
 import { window, workspace, Uri } from 'vscode';
-
-function execute(command: string): Promise<string> {
-    return new Promise(function (resolve, reject) {
-        childProcess.exec(command, function (error, standardOutput, standardError) {
-            if (error) { reject(); return; }
-            if (standardError) { reject(standardError); return; }
-            resolve(standardOutput);
-        });
-    });
-}
-
-async function pickFile(searchString: string | undefined) {
-    const esfiles = await execute(`cmd /c chcp 65001>nul && es ${searchString}`);
-    const result = await window.showQuickPick(esfiles.split('\n'), {
-        placeHolder: 'Select File',
-    });
-    return result;
-}
 
 async function getSearchString() {
     const result = await window.showInputBox({
         placeHolder: 'input search string',
+    });
+    return result;
+}
+
+export async function pickFile(searchString: string | undefined, pathString: string | undefined = undefined) {
+    const pathArg = pathString ? `-path ${pathString}` : '';
+    const esfiles = await Utils.execute(`cmd /c chcp 65001>nul && es ${pathArg} ${searchString}`);
+    const result = await window.showQuickPick(esfiles.split('\n').filter(path => !path.includes('.git')), {
+        placeHolder: 'Select File',
     });
     return result;
 }

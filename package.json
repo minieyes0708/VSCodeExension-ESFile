@@ -10,7 +10,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:minieyes.esfile.openfile"
+    "onCommand:minieyes.esfile.openfile",
+    "onCommand:minieyes.bookmarks.edit",
+    "onCommand:minieyes.bookmarks.openfile"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -18,6 +20,14 @@
       {
         "command": "minieyes.esfile.openfile",
         "title": "Minieyes ESFile: Open File"
+      },
+      {
+        "command": "minieyes.bookmarks.openfile",
+        "title": "Minieyes Bookmarks: Open File"
+      },
+      {
+        "command": "minieyes.bookmarks.edit",
+        "title": "Minieyes Bookmarks: Edit Bookmarks"
       }
     ]
   },
