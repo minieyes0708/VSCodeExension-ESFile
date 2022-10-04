@@ -7,15 +7,11 @@ export function activate(context: vscode.ExtensionContext) {
         esFile.openFile();
     });
     const bookmarksOpenFileDisposable = vscode.commands.registerCommand('minieyes.bookmarks.openfile', () => {
-        bookmarks.openFile(context.globalStorageUri);
-    });
-    const bookmarksEditBookmarksDisposable = vscode.commands.registerCommand('minieyes.bookmarks.edit', () => {
-        bookmarks.edit(context.globalStorageUri);
+        bookmarks.openFile();
     });
 
     context.subscriptions.push(esfileOpenFileDisposable);
     context.subscriptions.push(bookmarksOpenFileDisposable);
-    context.subscriptions.push(bookmarksEditBookmarksDisposable);
 }
 
 export function deactivate() { }

@@ -12,7 +12,6 @@
   ],
   "activationEvents": [
     "onCommand:minieyes.esfile.openfile",
-    "onCommand:minieyes.bookmarks.edit",
     "onCommand:minieyes.bookmarks.openfile"
   ],
   "main": "./out/extension.js",
@@ -25,10 +24,23 @@
       {
         "command": "minieyes.bookmarks.openfile",
         "title": "Minieyes Bookmarks: Open File"
-      },
+      }
+    ],
+    "configuration": [
       {
-        "command": "minieyes.bookmarks.edit",
-        "title": "Minieyes Bookmarks: Edit Bookmarks"
+        "title": "Bookmarks",
+        "properties": {
+          "minieyes.bookmarks": {
+            "type": ["object"],
+            "default": [],
+            "description": "list of bookmark paths"
+          },
+          "minieyes.bookmarks.expandon": {
+            "type": ["object"],
+            "default": [],
+            "description": "expand further paths into these bookmarks"
+          }
+        }
       }
     ]
   },
