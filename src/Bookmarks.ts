@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import * as Utils from './Utils';
 import * as ESFile from './ESFile';
 import { window, workspace, Uri } from 'vscode';
@@ -10,17 +9,26 @@ async function selectBookmark(bookmarks: Array<string>) {
     return result;
 }
 
-function getBookmarks() {
-    return workspace.getConfiguration("minieyes.bookmarks").map(b => b.trim());
-}
-
 export async function openFile() {
-    const bookmark = await selectBookmark(getBookmarks());
+    // select bookmark
+    const bookmarks = workspace.getConfiguration('minieyes.bookmarks').get<string[]>('paths') ?? [];
+    let bookmark = await selectBookmark(bookmarks);
     if (!bookmark) { return; }
+
+    // expand folders
+    bookmark = bookmark.replace('\\', '/');
+    const expandFolders = workspace.getConfiguration('minieyes.bookmarks').get<string[]>('expandFolders') ?? [];
+    const forwardSlashFolders = expandFolders.map(path => path.replace('\\', '/'));
+    while(forwardSlashFolders.includes(bookmark)) {
+        const subfolder = await selectBookmark(await Utils.readDir(bookmark));
+        if (!subfolder) { return; }
+
+        bookmark = bookmark + '/' + await selectBookmark(await Utils.readDir(bookmark));
+    }
+
+    // pick file
     const file = await ESFile.pickFile('', bookmark);
     if (!file) { return; }
-    const fileUri = Uri.parse('file:///' + file?.trim());
-    workspace.openTextDocument(fileUri).then(doc => {
-        window.showTextDocument(doc);
-    });
+
+    Utils.openFile(file);
 }

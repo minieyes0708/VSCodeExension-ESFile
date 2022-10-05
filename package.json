@@ -2,7 +2,7 @@
   "name": "esfile",
   "publisher": "Minieyes",
   "displayName": "esfile",
-  "description": "use ES to manipulate files",
+  "description": "use es.exe to manipulate files",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.71.0"
@@ -30,13 +30,18 @@
       {
         "title": "Bookmarks",
         "properties": {
-          "minieyes.bookmarks": {
-            "type": ["object"],
+          "minieyes.esfile.excludeFolders": {
+            "type": ["array"],
+            "default": [],
+            "description": "folders to exclude while es.exe listing files"
+          },
+          "minieyes.bookmarks.paths": {
+            "type": ["array"],
             "default": [],
             "description": "list of bookmark paths"
           },
-          "minieyes.bookmarks.expandon": {
-            "type": ["object"],
+          "minieyes.bookmarks.expandFolders": {
+            "type": ["array"],
             "default": [],
             "description": "expand further paths into these bookmarks"
           }
