@@ -10,10 +10,11 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:minieyes.esfile.openfile",
-    "onCommand:minieyes.bookmarks.openfile"
-  ],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/minieyes0708/VSCodeExension-ESFile"
+	},
+  "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
