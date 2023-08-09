@@ -3,7 +3,7 @@
   "publisher": "Minieyes",
   "displayName": "esfile",
   "description": "use es.exe to manipulate files",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.71.0"
   },
