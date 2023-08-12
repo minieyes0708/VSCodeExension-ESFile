@@ -14,10 +14,10 @@ export function activate(context: vscode.ExtensionContext) {
         utils.openFile('C:/Users/USER/OneDrive/文件/dendron/notes/TODO.md');
     }));
     context.subscriptions.push(vscode.commands.registerCommand('minieyes.edit.programs', () => {
-        utils.openFile('C:/Users/USER/.config/bookmarks.txt');
+        utils.openFile('C:/Users/USER/OneDrive/文件/.config/programs.txt');
     }));
     context.subscriptions.push(vscode.commands.registerCommand('minieyes.edit.bookmarks', () => {
-        utils.openFile('C:/Users/USER/.config/programs.txt');
+        utils.openFile('C:/Users/USER/OneDrive/文件/.config/bookmarks.txt');
     }));
 }
 
