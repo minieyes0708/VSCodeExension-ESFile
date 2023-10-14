@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as  iconvlite from 'iconv-lite';
 import * as childProcess from 'child_process';
 import { workspace, window, Uri } from 'vscode';
 
@@ -12,11 +13,11 @@ export function execute(command: string): Promise<string> {
     });
 }
 
-export function readFile(filepath: string): Promise<Buffer> {
+export function readFile(filepath: string, encoding: string = 'utf8'): Promise<string> {
     return new Promise(function (resolve, reject) {
         fs.readFile(filepath, function (error, data) {
             if (error) { reject(); return; }
-            resolve(data);
+            resolve(iconvlite.decode(data, encoding));
         });
     });
 }
