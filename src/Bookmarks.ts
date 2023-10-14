@@ -11,7 +11,7 @@ async function selectBookmark(bookmarks: Array<string>) {
 
 export async function openFile() {
     // select bookmark
-    const bookmarks = workspace.getConfiguration('minieyes.bookmarks').get<string[]>('paths') ?? [];
+    const bookmarks: string[] = (await Utils.readFile(workspace.getConfiguration('minieyes.bookmarks').get<string>('path') as string)).split(/\r?\n/);
     let bookmark = await selectBookmark(bookmarks);
     if (!bookmark) { return; }
 
