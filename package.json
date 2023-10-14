@@ -48,10 +48,10 @@
             "default": [],
             "description": "folders to exclude while es.exe listing files"
           },
-          "minieyes.bookmarks.paths": {
-            "type": ["array"],
+          "minieyes.bookmarks.path": {
+            "type": ["string"],
             "default": [],
-            "description": "list of bookmark paths"
+            "description": "bookmark.txt path"
           },
           "minieyes.bookmarks.expandFolders": {
             "type": ["array"],
