@@ -37,3 +37,15 @@ export function openFile(filepath: string): void {
         window.showTextDocument(doc);
     });
 }
+
+export async function selectItem(items: Array<string>, prompt: string | undefined = undefined): Promise<string | undefined> {
+    const result = await window.showQuickPick(items.filter(item => item !== ''), {
+        placeHolder: prompt,
+    });
+    return result;
+}
+
+export async function selectItemFromFile(filename: string, prompt: string | undefined = undefined): Promise<string | undefined> {
+    const items: string[] = (await readFile(filename)).split(/\r?\n/);
+    return selectItem(items, prompt);
+}
