@@ -27,16 +27,8 @@
         "title": "Minieyes Bookmarks: Open File"
       },
       {
-        "command": "minieyes.edit.todo",
-        "title": "Minieyes Edit: TODO.md"
-      },
-      {
-        "command": "minieyes.edit.programs",
-        "title": "Minieyes Edit: programs.txt"
-      },
-      {
-        "command": "minieyes.edit.bookmarks",
-        "title": "Minieyes Edit: bookmarks.txt"
+        "command": "minieyes.edit.settings",
+        "title": "Minieyes Edit: Choose Setting File"
       }
     ],
     "configuration": [
